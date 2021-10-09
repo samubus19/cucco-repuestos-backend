@@ -1,6 +1,6 @@
 const express        = require('express');
 const morgan         = require('morgan');
-
+const cors           = require('cors');
 
 //Initializations
 const app  = express();
@@ -15,7 +15,8 @@ app.use(express.urlencoded({extended : false}));
 app.use(express.json());
 
 //routes
-app.use(require('./routes/autenticacion.routes'));
+app.use(require('./routes/producto.routes'));
+// app.use(require('./routes/usuario.routes'));
 
 
 module.exports = app;
