@@ -5,6 +5,9 @@ const { cacheInit }        = require('../middlewares/cache');
 const router = Router();
 
 router.get('/products/all', cacheInit,  getProductos);
+// router.post('/products/new');
+// router.put('/products/edit');
+// router.delete('/products/delete');
 
 
 module.exports = router;
