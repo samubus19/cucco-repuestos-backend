@@ -1,12 +1,33 @@
 const productoController = {};
 
-productoController.getProductos = (req, res) => {
-    var arreglo = [];
-    for (let i = 0; i < 9999; i++) {
-        arreglo.push(i);
-    }
-    return res.json(arreglo);
+productoController.obtenerProductos = (req, res) => {
+    return res.status(200).json(
+    {
+        productos : "obteniendo todos los productos"
+    })
 }
+
+
+productoController.nuevoProducto = (req, res) => {
+    return res.status(201).json(
+    {
+        mensaje : "producto creado correctamente"
+    })
+} 
+
+productoController.editarProducto = (req, res) => {
+    return res.status(200).json(
+    {
+        mensaje : "producto editado correctamente"
+    })
+} 
+
+productoController.borrarProducto = (req, res) => {
+    return res.status(200).json(
+        {
+            mensaje : "producto eliminado correctamente"
+        })
+} 
 
 
 module.exports = productoController;

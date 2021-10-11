@@ -16,7 +16,8 @@ app.use(express.json());
 
 //routes
 app.use(require('./routes/producto.routes'));
-// app.use(require('./routes/usuario.routes'));
+app.use(require('./routes/ventas.routes'));
+app.use(require('./routes/usuario.routes'));
 
 
 module.exports = app;
