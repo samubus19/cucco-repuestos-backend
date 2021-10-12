@@ -10,5 +10,4 @@ const ProductoSchema = new Schema({
     }, {
     timestamps : true
 });
-
 module.exports = model("Producto", ProductoSchema);

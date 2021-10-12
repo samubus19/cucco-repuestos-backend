@@ -13,7 +13,6 @@ productoController.obtenerProductos = async (req, res) => {
  
 }
 
-
 productoController.nuevoProducto = async (req, res) => {
     try {
         const {nombre, marca, descripcion, precio_compra, precio_venta, stock} = req.body;

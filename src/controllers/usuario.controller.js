@@ -1,7 +1,7 @@
 const usuarioController = {};
 const Usuario           = require('../models/Usuario');
-const jwt                     = require('jsonwebtoken');
-const {SECRET_KEY}            = process.env;
+const jwt               = require('jsonwebtoken');
+const {SECRET_KEY}      = process.env;
 
 usuarioController.crearUsuario = async (req , res) => {
     const {usuario, contrasenia, email} = req.body;
@@ -39,5 +39,4 @@ usuarioController.loginUsuario = async (req , res) => {
     });
     res.status(200).send({token:token});
 }
-
 module.exports = usuarioController;
