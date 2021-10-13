@@ -13,6 +13,38 @@ productoController.obtenerProductos = async (req, res) => {
  
 }
 
+productoController.obtenerProductoPorNombre = async (req, res) => {
+    try {
+        const producto = await Producto.find({'nombre': {'$regex': req.params.nombre , '$options': 'i'}});
+        if(producto) {
+            return res.status(200).json({ producto : producto });
+        } else {
+            return res.status(404).json({ mensaje : "No se ha encontrado el producto" })
+        }
+
+    } catch(e) {
+        console.log(e);
+        return res.status(500).json({ mensaje : "Ha ocurrido un error" });
+    }
+ 
+}
+
+productoController.obtenerProductoPorId = async (req, res) => {
+    try {
+        const producto = await Producto.find({_id : req.params.id});
+        if(producto) {
+            return res.status(200).json({ producto : producto });
+        } else {
+            return res.status(404).json({ mensaje : "No se ha encontrado el producto" });
+        }
+
+    } catch(e) {
+        console.log(e);
+        return res.status(500).json({ mensaje : "Ha ocurrido un error" });
+    }
+ 
+}
+
 productoController.nuevoProducto = async (req, res) => {
     try {
         const {nombre, marca, descripcion, precio_compra, precio_venta, stock} = req.body;

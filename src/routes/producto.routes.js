@@ -1,19 +1,23 @@
-const { Router }           = require('express');
-const { cacheInit }        = require('../middlewares/cache');
+const { Router }         = require('express');
+const { cacheInit }      = require('../middlewares/cache');
+const { verificarToken } = require('../middlewares/verificacion-jwt');
 const { 
     obtenerProductos,
     editarProducto,
     borrarProducto,
-    nuevoProducto
+    nuevoProducto,
+    obtenerProductoPorNombre,
+    obtenerProductoPorId
     } = require('../controllers/producto.controller');
 
 const router = Router();
 
-router.get('/products/all', cacheInit,  obtenerProductos);
-router.get('/products/search/:name', cacheInit,  obtenerProductos);
-router.post('/products/new', nuevoProducto);
-router.put('/products/edit/:id', editarProducto);
-router.delete('/products/delete/:id', borrarProducto);
+router.get('/products/all', verificarToken, cacheInit,  obtenerProductos);
+router.get('/products/search/:nombre', verificarToken, cacheInit,  obtenerProductoPorNombre);
+router.get('/products/search/:id', verificarToken, cacheInit, obtenerProductoPorId);
+router.post('/products/new', verificarToken, nuevoProducto);
+router.put('/products/edit/:id', verificarToken, editarProducto);
+router.delete('/products/delete/:id', verificarToken, borrarProducto);
 
 
 module.exports = router;

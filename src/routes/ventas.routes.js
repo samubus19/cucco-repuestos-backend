@@ -1,5 +1,6 @@
-const { Router }        = require('express');
-const { cacheInit }     = require('../middlewares/cache');
+const { Router }         = require('express');
+const { cacheInit }      = require('../middlewares/cache');
+const { verificarToken } = require('../middlewares/verificacion-jwt'); 
 const { 
     obtenerVentas,
     nuevaVenta
@@ -8,8 +9,8 @@ const {
 const router            = Router();
 
 // router.get('/sales/all', cacheInit, obtenerVentas);
-router.get('/sales/all', cacheInit, obtenerVentas);
-router.post('/sales/new', nuevaVenta);
+router.get('/sales/all', verificarToken, cacheInit, obtenerVentas);
+router.post('/sales/new', verificarToken, nuevaVenta);
 
 
 module.exports = router;
