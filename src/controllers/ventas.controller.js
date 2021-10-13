@@ -17,28 +17,24 @@ ventasController.obtenerVentas = async (req, res) => {
 
 ventasController.nuevaVenta    = async (req, res) => {
     try {
-        const { id_usuario, id_productos } = req.body;
-        const producto = await Producto.find({ _id : id_productos });
+        const { id_usuario, id_productos, cantidad } = req.body;
 
-        // if(producto) {
-        //     console.log(producto[0].precio_venta);
-        // }
+        const usuario   = await Usuario.find({ _id : id_usuario });
+        const productos = await Producto.find({ _id : id_productos });
 
-        const usuario  = await Usuario.find({ _id : id_usuario });
-        // if(usuario) {
-        //     console.log(usuario);
-        // }
 
         const nuevaVenta = new Venta({
             cliente      : usuario[0],
-            productos    : producto[0],
-            precio_total : producto[0].precio_venta,
-            cantidad     : 1
+            precio_total : 0,
         });
+
+        for (let i = 0; i < productos.length; i++) {
+            nuevaVenta.productos.push({ producto : productos[i], cantidad : Number(cantidad[i]) });
+            nuevaVenta.precio_total += prodTemp.producto.precio_venta * cantidad[i];
+        }
         
-        // console.log(nuevaVenta);
         await nuevaVenta.save();
-    
+
         return res.status(200).json("Venta realizada correctamente");
 
     } catch(e) {

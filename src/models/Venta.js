@@ -4,9 +4,11 @@ const Producto         = require('../models/Producto');
 
 const VentaSchema = new Schema({
     cliente      : Usuario.schema,
-    productos    : [Producto.schema],
+    productos    : [{
+        producto     : Producto.schema,
+        cantidad     : Number,
+    }],
     precio_total : Number,
-    cantidad     : Number,
     }, {
         timestamps : true
     });
