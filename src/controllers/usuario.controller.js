@@ -29,10 +29,10 @@ usuarioController.loginUsuario = async (req , res) => {
     if(!usuario) {
         return res.status(404).send("El usuario no existe");
     }
-    // const contraseniaValida = await usuario.matchPassword(req.body.contrasenia);
-    // if (!contraseniaValida) {
-    //     return res.status(401).send({ auth: false, token: null, mensaje : "Contrasena invalida" });
-    // }
+    const contraseniaValida = await usuario.matchPassword(req.body.contrasenia);
+    if (!contraseniaValida) {
+        return res.status(401).send({ auth: false, token: null, mensaje : "Contrasena invalida" });
+    }
 
     const token = jwt.sign({ id: usuario._id }, SECRET_KEY, {
         expiresIn: '1h',

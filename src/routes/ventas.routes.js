@@ -9,8 +9,10 @@ const {
 const router            = Router();
 
 // router.get('/sales/all', cacheInit, obtenerVentas);
-router.get('/sales/all', verificarToken, cacheInit, obtenerVentas);
-router.post('/sales/new', verificarToken, nuevaVenta);
+// router.get('/sales/all', verificarToken, cacheInit, obtenerVentas);
+// router.post('/sales/new', verificarToken, nuevaVenta);
+router.get('/sales/all', cacheInit, obtenerVentas);
+router.post('/sales/new', nuevaVenta);
 
 
 module.exports = router;
