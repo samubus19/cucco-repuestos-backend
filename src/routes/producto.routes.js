@@ -12,18 +12,18 @@ const {
 
 const router = Router();
 
-// router.get('/products/all', verificarToken, cacheInit,  obtenerProductos);
-// router.get('/products/search/:nombre', verificarToken, cacheInit,  obtenerProductoPorNombre);
-// router.get('/products/search/:id', verificarToken, cacheInit, obtenerProductoPorId);
-// router.post('/products/new', verificarToken, nuevoProducto);
-// router.put('/products/edit/:id', verificarToken, editarProducto);
-// router.delete('/products/delete/:id', verificarToken, borrarProducto);
-router.get('/products/all', cacheInit,  obtenerProductos);
-router.get('/products/search/:nombre', cacheInit,  obtenerProductoPorNombre);
-router.get('/products/search/:id', cacheInit, obtenerProductoPorId);
-router.post('/products/new', nuevoProducto);
-router.put('/products/edit/:id', editarProducto);
-router.delete('/products/delete/:id', borrarProducto);
+router.get('/products/all', verificarToken, cacheInit,  obtenerProductos);
+router.get('/products/search/:nombre', verificarToken, cacheInit,  obtenerProductoPorNombre);
+router.get('/products/search/:id', verificarToken, cacheInit, obtenerProductoPorId);
+router.post('/products/new', verificarToken, nuevoProducto);
+router.put('/products/edit/:id', verificarToken, editarProducto);
+router.delete('/products/delete/:id', verificarToken, borrarProducto);
+// router.get('/products/all', cacheInit,  obtenerProductos);
+// router.get('/products/search/:nombre', cacheInit,  obtenerProductoPorNombre);
+// router.get('/products/search/:id', cacheInit, obtenerProductoPorId);
+// router.post('/products/new', nuevoProducto);
+// router.put('/products/edit/:id', editarProducto);
+// router.delete('/products/delete/:id', borrarProducto);
 
 
 module.exports = router;

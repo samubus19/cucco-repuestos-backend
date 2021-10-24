@@ -35,7 +35,7 @@ usuarioController.loginUsuario = async (req , res) => {
     }
 
     const token = jwt.sign({ id: usuario._id }, SECRET_KEY, {
-        expiresIn: '1h',
+        expiresIn: '24h',
     });
     res.status(200).send({token:token});
 }
