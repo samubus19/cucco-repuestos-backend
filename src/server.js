@@ -4,6 +4,7 @@ const cors           = require('cors');
 
 //Initializations
 const app  = express();
+const path = require('path');
 
 //Settings 
 app.use(cors());
@@ -19,5 +20,7 @@ app.use(require('./routes/producto.routes'));
 app.use(require('./routes/ventas.routes'));
 app.use(require('./routes/usuario.routes'));
 
+//Static files
+app.use(express.static(path.join(__dirname, 'public')));
 
 module.exports = app;
