@@ -39,4 +39,18 @@ usuarioController.loginUsuario = async (req , res) => {
     });
     res.status(200).send({token:token});
 }
+
+usuarioController.obtenerUsuarios = async (req, res) => {
+    try {
+        const usuarios = await Usuario.find();
+        return res.status(200).json({
+            usuarios : usuarios
+        });
+
+    } catch(e) {
+        console.log(e);
+        return res.status(500).json({ mensaje : "Ha ocurrido un error" });
+    }
+}
+
 module.exports = usuarioController;
