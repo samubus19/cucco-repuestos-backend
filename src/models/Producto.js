@@ -7,7 +7,8 @@ const ProductoSchema = new Schema({
     precio_venta  : Number,
     precio_compra : Number,
     marca         : String,
-    imagen        : String
+    imagen        : String,
+    categoria     : String,
     }, {
     timestamps : true
 });

@@ -5,7 +5,7 @@ const ClienteSchema = new Schema({
     apellido         : String,
     tipo_dni         : String,
     documento        : String,
-    fecha_nacimiento : Date,
+    fecha_nacimiento : String,
     pais             : String,
     provincia        : String,
     direccion        : String,

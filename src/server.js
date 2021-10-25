@@ -19,6 +19,7 @@ app.use(express.json());
 app.use(require('./routes/producto.routes'));
 app.use(require('./routes/ventas.routes'));
 app.use(require('./routes/usuario.routes'));
+app.use(require('./routes/cliente.routes'));
 
 //Static files
 app.use(express.static(path.join(__dirname, 'public')));
