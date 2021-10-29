@@ -5,10 +5,12 @@ const {
     obtenerClientes
  } = require('../controllers/cliente.controller')
  
+const { verificarToken } = require('../middlewares/verificacion-jwt');
+
 const router            = Router();
 
-router.post('/customer/new', crearCliente);
-router.get('/customer/all', obtenerClientes);
+router.post('/customer/new', verificarToken, crearCliente);
+router.get('/customer/all', verificarToken , obtenerClientes);
 
 
 module.exports = router;

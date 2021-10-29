@@ -4,8 +4,8 @@ const fs                 = require('fs');
 
 productoController.obtenerProductos = async (req, res) => {
     try {
-        const peliculas = await Producto.find();
-        return res.status(200).json(peliculas);
+        const productos = await Producto.find();
+        return res.status(200).json(productos);
 
     } catch(e) {
         console.log(e);
@@ -48,7 +48,7 @@ productoController.obtenerProductoPorId = async (req, res) => {
 
 productoController.nuevoProducto = async (req, res) => {
     try {
-        const {nombre, marca, descripcion, precio_compra, precio_venta, stock} = req.body;
+        const {nombre, marca, descripcion, precio_compra, precio_venta, stock, categoria} = req.body;
         const nuevoProducto = new Producto({
             nombre        : nombre,
             marca         : marca,
@@ -56,6 +56,7 @@ productoController.nuevoProducto = async (req, res) => {
             precio_compra : precio_compra,
             precio_venta  : precio_venta, 
             stock         : stock,
+            categoria     : categoria
         });
         fs.renameSync(req.file.path, req.file.path + '.' + req.file.originalname.split('.')[1])
         nuevoProducto.imagen = req.protocol + '://' + req.get('host') + '/img/' + req.file.filename + '.' + req.file.originalname.split('.')[1];

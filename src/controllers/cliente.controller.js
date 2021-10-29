@@ -29,8 +29,7 @@ clienteController.crearCliente = async (req , res) => {
 clienteController.obtenerClientes = async (req , res) => {
     try {
         const clientes = await Cliente.find();
-        return res.status(200).json({
-            clientes : clientes});
+        return res.status(200).json(clientes);
 
     } catch(e) {
         console.log(e);

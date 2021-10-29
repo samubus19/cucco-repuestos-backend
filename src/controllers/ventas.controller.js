@@ -17,14 +17,14 @@ ventasController.obtenerVentas = async (req, res) => {
 
 ventasController.nuevaVenta    = async (req, res) => {
     try {
-        const { id_usuario, id_productos, cantidad } = req.body;
+        const { id_usuario, id_productos, cantidad, id_cliente } = req.body;
 
-        const usuario   = await Usuario.find({ _id : id_usuario });
         const productos = await Producto.find({ _id : id_productos });
 
 
         const nuevaVenta = new Venta({
-            cliente      : usuario[0],
+            id_usuario   : id_usuario,
+            id_cliente   : id_cliente,
             precio_total : 0,
         });
 

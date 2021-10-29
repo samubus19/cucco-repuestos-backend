@@ -43,9 +43,7 @@ usuarioController.loginUsuario = async (req , res) => {
 usuarioController.obtenerUsuarios = async (req, res) => {
     try {
         const usuarios = await Usuario.find();
-        return res.status(200).json({
-            usuarios : usuarios
-        });
+        return res.status(200).json(usuarios);
 
     } catch(e) {
         console.log(e);

@@ -3,7 +3,8 @@ const Usuario          = require('../models/Usuario');
 const Producto         = require('../models/Producto');
 
 const VentaSchema = new Schema({
-    cliente      : Usuario.schema,
+    id_usuario       : String,
+    id_cliente       : String,
     productos    : [{
         producto     : Producto.schema,
         cantidad     : Number,
