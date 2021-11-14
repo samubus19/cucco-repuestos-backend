@@ -30,7 +30,10 @@ ventasController.nuevaVenta    = async (req, res) => {
 
         for (let i = 0; i < productos.length; i++) {
             nuevaVenta.productos.push({ producto : productos[i], cantidad : Number(cantidad[i]) });
-            nuevaVenta.precio_total += prodTemp.producto.precio_venta * cantidad[i];
+            nuevaVenta.precio_total += productos[i].precio_venta * cantidad[i];
+            await Producto.findByIdAndUpdate(productos[i]['_id'], {
+                stock : productos[i].stock - cantidad[i],
+            });
         }
         
         await nuevaVenta.save();

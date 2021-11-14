@@ -4,7 +4,7 @@ const { verificarToken } = require('../middlewares/verificacion-jwt');
 const { 
     obtenerVentas,
     nuevaVenta
- } = require('../controllers/ventas.controller')
+} = require('../controllers/ventas.controller')
  
 const router            = Router();
 

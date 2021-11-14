@@ -5,6 +5,7 @@ const UsuarioSchema = new Schema({
     usuario        : String,
     email          : String,
     contrasenia    : String,
+    rol            : String
     }, {
     timestamps : true
 });
