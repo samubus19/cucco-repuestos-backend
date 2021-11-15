@@ -21,6 +21,7 @@ app.use(require('./routes/ventas.routes'));
 app.use(require('./routes/usuario.routes'));
 app.use(require('./routes/cliente.routes'));
 app.use(require('./routes/datosfijos.routes'));
+app.use(require('./routes/empresa.routes'));
 
 //Static files
 app.use(express.static(path.join(__dirname, 'public')));
