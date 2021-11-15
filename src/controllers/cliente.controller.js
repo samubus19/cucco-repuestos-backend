@@ -36,4 +36,15 @@ clienteController.obtenerClientes = async (req , res) => {
         return res.status(500).json({ mensaje : "Ha ocurrido un error" });
     }
 }
+
+clienteController.obtenerClientePorId = async (req , res) => {
+    try {
+        const cliente = await Cliente.findById(req.params.id);
+        return res.status(200).json(cliente);
+
+    } catch(e) {
+        console.log(e);
+        return res.status(500).json({ mensaje : "Ha ocurrido un error" });
+    }
+}
 module.exports = clienteController;

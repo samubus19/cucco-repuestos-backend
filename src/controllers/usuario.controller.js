@@ -51,4 +51,15 @@ usuarioController.obtenerUsuarios = async (req, res) => {
     }
 }
 
+usuarioController.obtenerUsuarioPorId = async (req, res) => {
+    try {
+        const usuario = await Usuario.findById(req.params.id);
+        return res.status(200).json(usuario);
+
+    } catch(e) {
+        console.log(e);
+        return res.status(500).json({ mensaje : "Ha ocurrido un error" });
+    }
+}
+
 module.exports = usuarioController;

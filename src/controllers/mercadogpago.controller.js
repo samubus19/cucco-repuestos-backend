@@ -37,7 +37,7 @@ mpController.comprarMercadopago = (req, res) => {
           "email": usuario.email,
           "identification": {
               "type": "DNI",
-              "number": cliente.documento
+              "number": "cliente.documento"
           },
           "address": {
               "street_name": cliente.direccion,
