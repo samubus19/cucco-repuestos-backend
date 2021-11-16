@@ -32,7 +32,7 @@ productoController.obtenerProductoPorNombre = async (req, res) => {
 
 productoController.obtenerProductoPorId = async (req, res) => {
     try {
-        const producto = await Producto.find({_id : req.params.id});
+        const producto = await Producto.findById(req.params.id);
         if(producto) {
             return res.status(200).json({ producto : producto });
         } else {
