@@ -15,6 +15,17 @@ ventasController.obtenerVentas = async (req, res) => {
     }
 }
 
+ventasController.obtenerVentaPorId = async (req, res) => {
+    try {
+        const venta = await Venta.findById(req.params.id);
+        return res.status(200).json(venta);
+
+    } catch(e) {
+        console.log(e);
+        return res.status(500).json({ mensaje : "Ha ocurrido un error" });
+    }
+}
+
 ventasController.nuevaVenta    = async (req, res) => {
     try {
         const { id_usuario, id_productos, cantidad, id_cliente } = req.body;

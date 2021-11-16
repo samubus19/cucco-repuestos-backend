@@ -11,7 +11,7 @@ const {
 
 
 router.get('/cucco-repuestos/all', verificarToken , obtenerDatosEmpresa);
-router.put('/cucco-repuestos/:id', verificarToken, editarDatosEmpresa);
+router.put('/cucco-repuestos', verificarToken, editarDatosEmpresa);
 // router.post('/cucco-repuestos/', insertarDatosEmpresa)
 
 
