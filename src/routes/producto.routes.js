@@ -18,7 +18,7 @@ const router = Router();
 
 router.get('/products/all', cacheInit,  obtenerProductos);
 router.get('/products/search/:nombre', cacheInit,  obtenerProductoPorNombre);
-router.get('/products/search/:id', cacheInit, obtenerProductoPorId);
+router.get('/products/searchById/:id', cacheInit, obtenerProductoPorId);
 router.post('/products/new', verificarToken, upload.single('imagen'), nuevoProducto);
 router.put('/products/edit/:id', verificarToken, editarProducto);
 router.delete('/products/delete/:id', verificarToken, borrarProducto);
