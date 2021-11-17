@@ -11,7 +11,8 @@ const ClienteSchema = new Schema({
     direccion        : String,
     nro_casa         : String,
     nro_telefono     : String,
-    codigo_postal    : String
+    codigo_postal    : String,
+    id_usuario       : String
     }, {
     timestamps : true
 });

@@ -3,7 +3,7 @@ const Cliente           = require('../models/Cliente');
 
 clienteController.crearCliente = async (req , res) => {
     try {
-        const {nombre, apellido, tipo_dni, documento, fecha_nacimiento, pais, provincia, direccion, nro_casa, nro_telefono} = req.body;
+        const {nombre, apellido, tipo_dni, documento, fecha_nacimiento, pais, provincia, direccion, nro_casa, nro_telefono, id_usuario} = req.body;
         const nuevoCliente = new Cliente({
             nombre           : nombre,
             apellido         : apellido,
@@ -14,7 +14,8 @@ clienteController.crearCliente = async (req , res) => {
             provincia        : provincia,
             direccion        : direccion,
             nro_casa         : nro_casa,
-            nro_telefono     : nro_telefono
+            nro_telefono     : nro_telefono,
+            id_usuario       : id_usuario
         });
         await nuevoCliente.save();
         return res.status(201).json({ mensaje : "Cliente agregado correctamente" });
@@ -47,4 +48,17 @@ clienteController.obtenerClientePorId = async (req , res) => {
         return res.status(500).json({ mensaje : "Ha ocurrido un error" });
     }
 }
+
+clienteController.obtenerClientePorIdUsuario = async (req , res) => {
+    try {
+        const {id_usuario} = req.body
+        const cliente = await Cliente.findOne({id_usuario:id_usuario});
+        return res.status(200).json(cliente);
+
+    } catch(e) {
+        console.log(e);
+        return res.status(500).json({ mensaje : "Ha ocurrido un error" });
+    }
+}
+
 module.exports = clienteController;

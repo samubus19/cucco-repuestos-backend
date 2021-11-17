@@ -4,12 +4,13 @@ const jwt               = require('jsonwebtoken');
 const {SECRET_KEY}      = process.env;
 
 usuarioController.crearUsuario = async (req , res) => {
-    const {usuario, contrasenia, email} = req.body;
+    const {usuario, contrasenia, email, rol} = req.body;
 
     const nuevoUsuario = new Usuario({
         usuario     : usuario,
         contrasenia : contrasenia,
-        email       : email
+        email       : email,
+        rol         : rol
     });
 
     const nombreUsuario = await Usuario.findOne({ $or : [{usuario : usuario}, { email : email}] });
@@ -37,7 +38,7 @@ usuarioController.loginUsuario = async (req , res) => {
     const token = jwt.sign({ id: usuario._id }, SECRET_KEY, {
         expiresIn: '24h',
     });
-    res.status(200).send({token:token});
+    res.status(200).send({token:token, id_usuario:usuario._id});
 }
 
 usuarioController.obtenerUsuarios = async (req, res) => {
