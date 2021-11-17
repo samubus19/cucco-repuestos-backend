@@ -12,22 +12,30 @@ mercadopago.configure({
   
 mpController.comprarMercadopago = (req, res) => {
 
-  const { usuario, cliente, producto } = req.body;
+  let { usuario, cliente, producto } = req.body;
+
+    usuario = JSON.parse(usuario)
+    cliente = JSON.parse(cliente)
+    producto = JSON.parse(producto)
+
+    console.log(usuario)
+    console.log(cliente)
+    console.log(producto)
 
     let preference = {
         items                 : [
           {
             title       : producto.nombre,
-            unit_price  : producto.precio,
+            unit_price  : Number(producto.precio_venta),
             quantity    : 1,
             currency_id : "ARS",
-            picture_url : producto.imagen,
+            picture_url : "https://www.autofacil.es/wp-content/uploads/2021/05/embrague-del-coche.jpg",
             description : producto.descripcion,
             category_id : producto.categoria,
           }
         ],
         "back_urls": {
-            "success"   : "localhost:3000/products/all",
+            "success"   : "localhost:3000/gracias",
             "failure"   : "localhost:3000/products/all",
             "pending"   : "localhost:3000/products/all"
         },
@@ -37,11 +45,11 @@ mpController.comprarMercadopago = (req, res) => {
           "email": usuario.email,
           "identification": {
               "type": "DNI",
-              "number": "cliente.documento"
+              "number": cliente.documento
           },
           "address": {
               "street_name": cliente.direccion,
-              "street_number": cliente.nro_casa,
+              "street_number": 132,
               "zip_code": cliente.codigo_postal
           }
         },
