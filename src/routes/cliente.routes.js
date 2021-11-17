@@ -14,7 +14,7 @@ const router            = Router();
 router.post('/customer/new', verificarToken, crearCliente);
 router.get('/customer/all', verificarToken , obtenerClientes);
 router.get('/customer/:id', verificarToken , obtenerClientePorId);
-router.get('/customerByUser', verificarToken , obtenerClientePorIdUsuario);
+router.post('/customerByUser', verificarToken , obtenerClientePorIdUsuario);
 
 
 module.exports = router;
